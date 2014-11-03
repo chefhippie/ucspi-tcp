@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ucspi_tcp
+# Cookbook Name:: ucspi-tcp
 # Attributes:: default
 #
 # Copyright 2013-2014, Thomas Boerger <thomas@webhippie.de>
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-default["ucspi_tcp"]["packages"] = value_for_platform_family(
+default["ucspi-tcp"]["packages"] = value_for_platform_family(
   "debian" => %w(
     ucspi-tcp
   ),
@@ -29,7 +29,7 @@ default["ucspi_tcp"]["packages"] = value_for_platform_family(
   )
 )
 
-default["ucspi_tcp"]["zypper"]["alias"] = "network"
-default["ucspi_tcp"]["zypper"]["title"] = "Networking"
-default["ucspi_tcp"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/network/openSUSE_#{node["platform_version"]}/"
-default["ucspi_tcp"]["zypper"]["key"] = "#{node["ucspi_tcp"]["zypper"]["repo"]}repodata/repomd.xml.key"
+default["ucspi-tcp"]["zypper"]["alias"] = "network"
+default["ucspi-tcp"]["zypper"]["title"] = "Networking"
+default["ucspi-tcp"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/network/openSUSE_#{node["platform_version"]}/"
+default["ucspi-tcp"]["zypper"]["key"] = "#{node["ucspi-tcp"]["zypper"]["repo"]}repodata/repomd.xml.key"

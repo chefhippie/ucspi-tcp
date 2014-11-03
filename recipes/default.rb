@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ucspi_tcp
+# Cookbook Name:: ucspi-tcp
 # Recipe:: default
 #
 # Copyright 2013-2014, Thomas Boerger <thomas@webhippie.de>
@@ -21,16 +21,16 @@ case node["platform_family"]
 when "suse"
   include_recipe "zypper"
 
-  zypper_repository node["ucspi_tcp"]["zypper"]["alias"] do
-    uri node["ucspi_tcp"]["zypper"]["repo"]
-    key node["ucspi_tcp"]["zypper"]["key"]
-    title node["ucspi_tcp"]["zypper"]["title"]
+  zypper_repository node["ucspi-tcp"]["zypper"]["alias"] do
+    uri node["ucspi-tcp"]["zypper"]["repo"]
+    key node["ucspi-tcp"]["zypper"]["key"]
+    title node["ucspi-tcp"]["zypper"]["title"]
 
     action :add
   end
 end
 
-node["ucspi_tcp"]["packages"].each do |name|
+node["ucspi-tcp"]["packages"].each do |name|
   package name do
     action :install
   end

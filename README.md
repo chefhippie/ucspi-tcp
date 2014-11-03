@@ -1,2 +1,2 @@
-ucspi_tcp Cookbook
+ucspi-tcp Cookbook
 ==================
