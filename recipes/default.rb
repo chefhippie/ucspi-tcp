@@ -27,6 +27,10 @@ when "suse"
     title node["ucspi-tcp"]["zypper"]["title"]
 
     action :add
+
+    only_if do
+      node["ucspi-tcp"]["zypper"]["enabled"]
+    end
   end
 end
 

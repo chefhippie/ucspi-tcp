@@ -21,14 +21,12 @@ default["ucspi-tcp"]["packages"] = value_for_platform_family(
   "debian" => %w(
     ucspi-tcp
   ),
-  "ubuntu" => %w(
-    ucspi-tcp
-  ),
   "suse" => %w(
     ucspi-tcp
   )
 )
 
+default["ucspi-tcp"]["zypper"]["enabled"] = true
 default["ucspi-tcp"]["zypper"]["alias"] = "network"
 default["ucspi-tcp"]["zypper"]["title"] = "Networking"
 default["ucspi-tcp"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/network/openSUSE_#{node["platform_version"]}/"
