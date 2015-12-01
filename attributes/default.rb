@@ -26,8 +26,22 @@ default["ucspi-tcp"]["packages"] = value_for_platform_family(
   )
 )
 
-default["ucspi-tcp"]["zypper"]["enabled"] = true
-default["ucspi-tcp"]["zypper"]["alias"] = "network"
-default["ucspi-tcp"]["zypper"]["title"] = "Networking"
-default["ucspi-tcp"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/network/openSUSE_#{node["platform_version"]}/"
-default["ucspi-tcp"]["zypper"]["key"] = "#{node["ucspi-tcp"]["zypper"]["repo"]}repodata/repomd.xml.key"
+case node["platform_family"]
+when "suse"
+  repo = case node["platform_version"]
+  when /\A13\.\d+\z/
+    "openSUSE_#{node["platform_version"]}"
+  when /\A42\.\d+\z/
+    "openSUSE_Leap_#{node["platform_version"]}"
+  when /\A\d{8}\z/
+    "openSUSE_Tumbleweed"
+  else
+    raise "Unsupported SUSE version"
+  end
+
+  default["ucspi-tcp"]["zypper"]["enabled"] = true
+  default["ucspi-tcp"]["zypper"]["alias"] = "network"
+  default["ucspi-tcp"]["zypper"]["title"] = "Networking"
+  default["ucspi-tcp"]["zypper"]["repo"] = "http://download.opensuse.org/repositories/network/#{repo}/"
+  default["ucspi-tcp"]["zypper"]["key"] = "#{node["ucspi-tcp"]["zypper"]["repo"]}repodata/repomd.xml.key"
+end
